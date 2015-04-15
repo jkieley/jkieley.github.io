@@ -270,15 +270,15 @@
 				font-size: 20px;
 			}
 
-			.move-down-two{
+			.move-down-2{
 				margin-top: -80px;
 				z-index: 4;
 			}
-			.move-down-three{
+			.move-down-3{
 				margin-top: -80px;
 				z-index: 5;
 			}
-			.move-down-four{
+			.move-down-4{
 				margin-top: -80px;
 				z-index: 6;
 			}
@@ -289,19 +289,19 @@
 		<div class="plus-button-wrap">
 			<i class="fa fa-plus plus-button"></i>
 		</div>
-		<div class="bus-wrap move-down-one">
+		<div class="bus-wrap">
 			<div class="profile-image small positioned"></div>
 			<div class="bus-pass"></div>
 		</div>
-		<div class="bus-wrap move-down-two">
+		<div class="bus-wrap move-down-2 hiddens">
 			<div class="profile-image small positioned"></div>
 			<div class="bus-pass"></div>
 		</div>
-		<div class="bus-wrap move-down-three">
+		<div class="bus-wrap move-down-3 hiddens">
 			<div class="profile-image small positioned"></div>
 			<div class="bus-pass"></div>
 		</div>
-		<div class="bus-wrap move-down-four">
+		<div class="bus-wrap move-down-4 hiddens">
 			<div class="profile-image small positioned"></div>
 			<div class="bus-pass"></div>
 		</div>
@@ -403,6 +403,15 @@
 			//profile view
 			map(".profile-view .backbutton",".main-view");
 			map(".profile-view .save",".main-view");
+
+			var counter = 1;
+			$(".plus-button").click(function(){
+				if(counter<4){
+					var val = ++counter;
+					console.log("show","move-down-"+val);
+					$(".move-down-"+val).show();	
+				}
+			});
 
 		})();
 

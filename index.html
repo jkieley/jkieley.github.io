@@ -282,7 +282,14 @@
 				margin-top: -80px;
 				z-index: 6;
 			}
+			.bus-pass:hover {
+			  border: 1px solid black;
+			}
 		</style>
+		<div class="breadcrum">
+			<i class="fa fa-arrow-left backbutton"></i>
+			<i class="fa logout">Logout</i>
+		</div>
 		<div class="header">
 			<h1>Wallet</h1>
 		</div>
@@ -404,11 +411,13 @@
 			map(".profile-view .backbutton",".main-view");
 			map(".profile-view .save",".main-view");
 
+			//wallet-view
+			map(".wallet-view .backbutton",".main-view");			
+
 			var counter = 1;
-			$(".plus-button").click(function(){
+			$(".plus-button-wrap").click(function(){
 				if(counter<4){
 					var val = ++counter;
-					console.log("show","move-down-"+val);
 					$(".move-down-"+val).show();	
 				}
 			});

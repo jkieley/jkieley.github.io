@@ -36,7 +36,7 @@
 	.wallet{
 		text-align: left;
 		font-size: 70px;
-		padding: 40px 20px 56px;
+		padding: 40px 20px 7px;
 	}
 	.wallet *{
 		vertical-align: middle;
@@ -148,11 +148,14 @@
 	.paddme{
 		padding: 40px;
 	}
-
+	.splash-view{
+		margin-top: 90px;
+	}
 	.splash-view h1{
 	  text-align: center;
 	}
 	.breadcrum{
+		text-align: left;
 		height: 45px;
 		width: 100%;
 		background: rgb(51, 122, 183);
@@ -170,6 +173,25 @@
 		width: 100%;
 		margin: 10px 0;
 	}
+	.logout{
+		float: right;
+		cursor: pointer;
+		font-size: 20px;
+		padding: 12px;
+		color: white;
+		border-left: 1px solid rgb(77, 77, 77);
+	}
+	.view{
+		position: relative;
+		height: 100%;
+	}
+
+	.profile-view .save{
+		position: absolute;
+		bottom: 40px;
+		width: 100px;
+		left: 94px;
+	}
 	</style>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -178,7 +200,10 @@
 <div class="container">
 	<div class="iphone-image"></div>
 	<div class="container subcontainer">
-		<div class="main-view view hiddens">
+		<div class="main-view view">
+			<div class="breadcrum">
+				<i class="fa logout">Logout</i>
+			</div>
 			<div class="clickable profile">
 				<div class="profile-image"></div>
 				<h3>My Profile</h3>
@@ -189,31 +214,30 @@
 			</div>
 		</div>
 		<div class="profile-view view hiddens">
+		<div class="breadcrum">
+			<i class="fa fa-arrow-left backbutton"></i>
+			<i class="fa logout">Logout</i>
+		</div>
 		<div class="header">
-			<h1>Settings</h1>
-			<div class="profile-image small"></div>
+			<h1>My Profile</h1>
 			<form class="form-horizontal">
 			  <div class="form-group">
 			    <div class="col-sm-12">
-			      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value="">
+			      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value="YourEmail@gmail.com">
 			    </div>
 			  </div>
 			  <div class="form-group">
 			    <div class="col-sm-12">
-			      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" value="">
+			      <input type="password" class="form-control" id="inputPassword3" placeholder="New Password" value="">
 			    </div>
 			  </div>
-			  <div class="form-group address-group">
-			  <label for="address">Address</label>
-				 <textarea id="address" class="form-control" rows="3">1234 Bogas Lane
-Chandler, AZ 85286</textarea>
-			  </div>
-			  <div class="form-group submit-btn">
+			  <div class="form-group">
 			    <div class="col-sm-12">
-			      <button type="submit" class="btn btn-primary btn-lg save-btn">Save</button>
+			      <input type="password" class="form-control" id="confrimPassword3" placeholder="Confirm New Password" value="">
 			    </div>
 			  </div>
 			</form>
+			<button class="btn btn-lg btn-primary btn-block save">Save</button>
 		</div>
 		</div>
 		<div class="wallet-view view hiddens">
@@ -252,7 +276,7 @@ Chandler, AZ 85286</textarea>
 
 	    </div>
 
-    	<div class="splash-view view paddme ">
+    	<div class="splash-view view paddme hiddens">
 				<h1>Quick Pass</h1>
     	        <button class="btn btn-lg btn-primary btn-block signin">Sign in</button>
     	        <button class="btn btn-lg btn-success btn-block signup">Sign up</button>
@@ -264,6 +288,9 @@ Chandler, AZ 85286</textarea>
 				margin-bottom: 10px;
 			}
 		</style>
+		<div class="breadcrum">
+			<i class="fa fa-arrow-left backbutton"></i>
+		</div>
 		<div class="header">
 			<h1>Signup</h1>
 			<form class="form-signin">
@@ -287,6 +314,9 @@ Chandler, AZ 85286</textarea>
 				});
 			};
 
+			//global
+			map(".logout",".splash-view");
+
 			map(".clickable.profile",".profile-view");
 			map(".wallet.clickable",".wallet-view");
 			map(".save-btn",".main-view");
@@ -298,13 +328,21 @@ Chandler, AZ 85286</textarea>
 			
 			//login
 			map(".login-view .backbutton",".splash-view")
-
-			// signup
-			map(".login-view .backbutton",".splash-view")
-			$(".signup-view form").on('submit',function(e){
+			$(".login-view form").on('submit',function(e){
 				e.preventDefault();
 				hideThenShow(".main-view")
 			})
+
+			// signup
+			map(".signup-view .backbutton",".splash-view")
+			$(".signup-view form").on('submit',function(e){
+				e.preventDefault();
+				hideThenShow(".main-view")
+			});
+
+			//profile view
+			map(".profile-view .backbutton",".main-view");
+			map(".profile-view .save",".main-view");
 
 		})();
 

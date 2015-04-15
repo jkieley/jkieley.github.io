@@ -144,6 +144,32 @@
 		background-position-x: -16px;
 		margin-left: 14px;
 	}
+
+	.paddme{
+		padding: 40px;
+	}
+
+	.splash-view h1{
+	  text-align: center;
+	}
+	.breadcrum{
+		height: 45px;
+		width: 100%;
+		background: rgb(51, 122, 183);
+	}
+	.backbutton{
+		cursor: pointer;
+		font-size: 20px;
+		padding: 12px;
+		color: white;
+		border-right: 1px solid rgb(77, 77, 77);
+	}
+
+	.signup-view h1{
+		text-align: center;
+		width: 100%;
+		margin: 10px 0;
+	}
 	</style>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -152,7 +178,7 @@
 <div class="container">
 	<div class="iphone-image"></div>
 	<div class="container subcontainer">
-		<div class="main-view">
+		<div class="main-view view hiddens">
 			<div class="clickable profile">
 				<div class="profile-image"></div>
 				<h3>My Profile</h3>
@@ -162,7 +188,7 @@
 				<span>Wallet</span>
 			</div>
 		</div>
-		<div class="profile-view hiddens">
+		<div class="profile-view view hiddens">
 		<div class="header">
 			<h1>Settings</h1>
 			<div class="profile-image small"></div>
@@ -190,7 +216,7 @@ Chandler, AZ 85286</textarea>
 			</form>
 		</div>
 		</div>
-		<div class="wallet-view hiddens">
+		<div class="wallet-view view hiddens">
 		<div class="header">
 			<h1>Wallet</h1>
 			<div class="profile-image small"></div>
@@ -198,32 +224,90 @@ Chandler, AZ 85286</textarea>
 			<div class="profile-image small positioned"></div>
 			<div class="bus-pass"></div>
 			<div>
-				<button type="button" class="btn btn-warning btn-lg upload">Upload<br/><i class="fa fa-upload"></i></button>
+				<!-- <button type="button" class="btn btn-warning btn-lg upload">Upload<br/><i class="fa fa-upload"></i></button> -->
 			</div>
 			<div>
-				<button type="submit" class="btn btn-primary btn-lg save-btn">Save</button>
+				<!-- <button type="submit" class="btn btn-primary btn-lg save-btn">Save</button> -->
 			</div>
+		</div>
+		<div class="login-view view hiddens">
+			<div class="breadcrum">
+				<i class="fa fa-arrow-left backbutton"></i>
+			</div>
+			<div class="paddme">
+				<form class="form-signin">
+				  <h2 class="form-signin-heading">Please sign in</h2>
+				  <label for="inputEmail" class="sr-only">Email address</label>
+				  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+				  <label for="inputPassword" class="sr-only">Password</label>
+				  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+				  <div class="checkbox">
+				    <label>
+				      <input type="checkbox" value="remember-me"> Remember me
+				    </label>
+				  </div>
+				  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+				</form>
+			</div>
+
+	    </div>
+
+    	<div class="splash-view view paddme ">
+				<h1>Quick Pass</h1>
+    	        <button class="btn btn-lg btn-primary btn-block signin">Sign in</button>
+    	        <button class="btn btn-lg btn-success btn-block signup">Sign up</button>
+
+        </div>
+		<div class="signup-view view hiddens">
+		<style type="text/css">
+			.signup-view form > *{
+				margin-bottom: 10px;
+			}
+		</style>
+		<div class="header">
+			<h1>Signup</h1>
+			<form class="form-signin">
+			  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+			  <input type="password" id="signup-view-password" class="form-control" placeholder="Password" required="">
+  			  <input type="password" id="signup-view-confirmpassword" class="form-control" placeholder="Confirm Password" required="">
+			  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			</form>
+		</div>
 		</div>
 	</div>
 	<script>
-		$(".clickable.profile").click(function(){
-			$(".main-view").hide();
-			$(".profile-view").show();
-		})
-		$(".wallet.clickable").click(function(){
-			$(".main-view").hide();
-			$(".wallet-view").show();
-		})
-		
-		$(".save-btn").click(function(){
-			$(".main-view").show();
-			$(".profile-view").hide();
-		})
+		(function(){
+			var hideThenShow = function(viewToShowSelector){
+				$(".view").hide();
+				$(viewToShowSelector).show();
+			};
+			var map = function(selector, viewToShowSelector){
+				$(selector).click(function(e){
+					hideThenShow(viewToShowSelector);
+				});
+			};
 
-		$(".wallet-view button").click(function(){
-			$(".main-view").show();
-			$(".wallet-view").hide();
-		})
+			map(".clickable.profile",".profile-view");
+			map(".wallet.clickable",".wallet-view");
+			map(".save-btn",".main-view");
+			map(".wallet-view button",".main-view");
+
+			// splash
+			map(".signin",".login-view");
+			map(".signup",".signup-view");
+			
+			//login
+			map(".login-view .backbutton",".splash-view")
+
+			// signup
+			map(".login-view .backbutton",".splash-view")
+			$(".signup-view form").on('submit',function(e){
+				e.preventDefault();
+				hideThenShow(".main-view")
+			})
+
+		})();
+
 
 	</script>
 </div>

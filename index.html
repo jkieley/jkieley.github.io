@@ -80,7 +80,6 @@
 	.bus-pass {
 		position: relative;
 		z-index: 3;
-		margin-top: 50px;
 		border: 1px solid #bbb;
 		border-radius: 4px;
 		display: inline-block;
@@ -124,7 +123,6 @@
 		resize: none;
 	}
 	.wallet-view h1{
-		margin-right: 40px;
 	}
 	.wallet-view{
 		text-align: center;
@@ -136,9 +134,10 @@
 		font-size: 50px;
 	}
 	.small.positioned{
+		height: 84px;
 		position: absolute;
-		top: 200px;
-		left: 30px;
+		top: 40px;
+		left: -13px;
 		z-index: 0;
 		width: 90px;
 		background-position-x: -16px;
@@ -184,6 +183,7 @@
 	.view{
 		position: relative;
 		height: 100%;
+		width: 281px;
 	}
 
 	.profile-view .save{
@@ -191,6 +191,12 @@
 		bottom: 40px;
 		width: 100px;
 		left: 94px;
+	}
+
+	.bus-wrap{
+		position: relative;
+		width: 200px;
+		margin: auto;
 	}
 	</style>
 
@@ -200,7 +206,7 @@
 <div class="container">
 	<div class="iphone-image"></div>
 	<div class="container subcontainer">
-		<div class="main-view view">
+		<div class="main-view view hiddens">
 			<div class="breadcrum">
 				<i class="fa logout">Logout</i>
 			</div>
@@ -240,13 +246,67 @@
 			<button class="btn btn-lg btn-primary btn-block save">Save</button>
 		</div>
 		</div>
-		<div class="wallet-view view hiddens">
+		<div class="wallet-view view">
+		<style type="text/css">
+			.plus-button-wrap{
+				cursor: pointer;
+				position: absolute;
+				top: 23px;
+				left: 220px;
+				z-index: 1000;
+				height: 40px;
+				width: 40px;
+				background: rgb(92, 184, 92);
+				text-align: center;
+				vertical-align: top;
+				position: relative;
+				border-radius: 99999999px;
+			}
+			.plus-button{
+				position: absolute;
+				top: 11px;
+				left: 12px;
+				color: white;
+				font-size: 20px;
+			}
+
+			.move-down-two{
+				margin-top: -80px;
+				z-index: 4;
+			}
+			.move-down-three{
+				margin-top: -80px;
+				z-index: 5;
+			}
+			.move-down-four{
+				margin-top: -80px;
+				z-index: 6;
+			}
+		</style>
 		<div class="header">
 			<h1>Wallet</h1>
-			<div class="profile-image small"></div>
 		</div>
+		<div class="plus-button-wrap">
+			<i class="fa fa-plus plus-button"></i>
+		</div>
+		<div class="bus-wrap move-down-one">
 			<div class="profile-image small positioned"></div>
 			<div class="bus-pass"></div>
+		</div>
+		<div class="bus-wrap move-down-two">
+			<div class="profile-image small positioned"></div>
+			<div class="bus-pass"></div>
+		</div>
+		<div class="bus-wrap move-down-three">
+			<div class="profile-image small positioned"></div>
+			<div class="bus-pass"></div>
+		</div>
+		<div class="bus-wrap move-down-four">
+			<div class="profile-image small positioned"></div>
+			<div class="bus-pass"></div>
+		</div>
+			
+			
 			<div>
 				<!-- <button type="button" class="btn btn-warning btn-lg upload">Upload<br/><i class="fa fa-upload"></i></button> -->
 			</div>

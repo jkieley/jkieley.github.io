@@ -5,6 +5,14 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<style>
+	.question-mark{
+		padding: 12px 17px;
+		color: white;
+		font-size: 20px;
+		float: right;
+		border-left: 1px solid rgb(77, 77, 77);
+		cursor: pointer;
+	}
 	.container{
 		position: relative;
 		width: 740px;
@@ -214,9 +222,10 @@
 <div class="container">
 	<div class="iphone-image"></div>
 	<div class="container subcontainer">
-		<div class="main-view view hiddens">
+		<div class="main-view view">
 			<div class="breadcrum">
 				<i class="fa logout">Logout</i>
+				<i class="fa fa-question question-mark"></i>
 			</div>
 			<div class="clickable profile">
 				<div class="profile-image"></div>
@@ -231,6 +240,7 @@
 		<div class="breadcrum">
 			<i class="fa fa-arrow-left backbutton"></i>
 			<i class="fa logout">Logout</i>
+			<i class="fa fa-question question-mark"></i>
 		</div>
 		<div class="header">
 			<h1>My Profile</h1>
@@ -297,6 +307,7 @@
 		<div class="breadcrum">
 			<i class="fa fa-arrow-left backbutton"></i>
 			<i class="fa logout">Logout</i>
+			<i class="fa fa-question question-mark"></i>
 		</div>
 		<div class="header">
 			<h1>Wallet</h1>
@@ -332,6 +343,7 @@
 		<div class="login-view view hiddens">
 			<div class="breadcrum">
 				<i class="fa fa-arrow-left backbutton"></i>
+				<i class="fa fa-question question-mark"></i>
 			</div>
 			<div class="paddme">
 				<form class="form-signin">
@@ -365,7 +377,7 @@
 			<div class="qvc-image"></div>
 				
 		</div>
-    	<div class="splash-view view paddme">
+    	<div class="splash-view view paddme hiddens">
 				<h1>Quick Pass</h1>
     	        <button class="btn btn-lg btn-primary btn-block signin">Sign in</button>
     	        <button class="btn btn-lg btn-success btn-block signup">Sign up</button>
@@ -379,6 +391,7 @@
 		</style>
 		<div class="breadcrum">
 			<i class="fa fa-arrow-left backbutton"></i>
+			<i class="fa fa-question question-mark"></i>
 		</div>
 		<div class="header">
 			<h1>Signup</h1>
@@ -447,6 +460,10 @@
 					$(".move-down-"+val).show();	
 				}
 			});
+
+			$(".question-mark").click(function(){
+				window.location = "help.html"
+			})
 
 		})();
 
